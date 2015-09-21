@@ -13,6 +13,7 @@
       <entry-point class='com.gitHub.xMIFx.welcomeWebApp.client.WelcomeWebApp'/>
       <!-- Inherit the UiBinder module.                               -->
       <inherits name="com.google.gwt.uibinder.UiBinder"/>
+      <inherits name="com.google.gwt.activity.Activity"/>
 
       <set-configuration-property name="locale.useragent" value="Y"/>
       <!-- Availabe Locales -->

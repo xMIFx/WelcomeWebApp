@@ -1,6 +1,7 @@
 package com.gitHub.xMIFx.welcomeWebApp.client.login;
 
 import com.gitHub.xMIFx.welcomeWebApp.client.LoginServiceAsync;
+import com.gitHub.xMIFx.welcomeWebApp.client.welcomePage.WelcomePage;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -11,8 +12,6 @@ import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by Vlad on 19.09.2015.
@@ -34,6 +33,8 @@ public class Login extends Composite {
     @UiField
     Label errorBox;
 
+    private Boolean tooShort = true;
+
     private final LoginServiceAsync loginServiceAsync;
 
     @UiTemplate("Login.ui.xml")
@@ -49,9 +50,29 @@ public class Login extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
+    @UiHandler("loginBox")
+    void handleLoginChange(ValueChangeEvent<String> event) {
+        if (event.getValue().length() < 1) {
+            tooShort = true;
+        } else {
+            tooShort = false;
+        }
+    }
+
+    @UiHandler("passwordBox")
+    void handlePasswordChange(ValueChangeEvent<String> event) {
+        if (event.getValue().length() < 1) {
+            tooShort = true;
+        } else {
+            tooShort = false;
+        }
+    }
+
     @UiHandler("buttonSubmit")
     void onClick(ClickEvent e) {
-        sendInfoToServer();
+        if (!tooShort) {
+            sendInfoToServer();
+        }
     }
 
     private void sendInfoToServer() {
@@ -71,6 +92,8 @@ public class Login extends Composite {
                 }
             }
         });
+
+        RootPanel.get("gwtContainer").add(new WelcomePage());
     }
 
 

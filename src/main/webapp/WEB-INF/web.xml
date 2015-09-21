@@ -14,7 +14,7 @@
 
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>welcomeWebApp/gwt/loginService</url-pattern>
+		<url-pattern>/welcomeWebApp/gwt/loginService</url-pattern>
 	</servlet-mapping>
 
 </web-app>
