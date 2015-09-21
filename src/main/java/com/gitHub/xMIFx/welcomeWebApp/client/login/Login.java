@@ -1,6 +1,7 @@
 package com.gitHub.xMIFx.welcomeWebApp.client.login;
 
 import com.gitHub.xMIFx.welcomeWebApp.client.LoginServiceAsync;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.ILoginView;
 import com.gitHub.xMIFx.welcomeWebApp.client.welcomePage.WelcomePage;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -9,14 +10,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+
 
 /**
  * Created by Vlad on 19.09.2015.
  */
-public class Login extends Composite {
+public class Login extends Composite implements ILoginView {
 
     @UiField(provided = true)
     final LoginResources res;
@@ -36,6 +37,14 @@ public class Login extends Composite {
     private Boolean tooShort = true;
 
     private final LoginServiceAsync loginServiceAsync;
+
+    private ILoginPresenter presenter;
+
+    @Override
+    public void setPresenter(ILoginPresenter presenter) {
+        this.presenter = presenter;
+
+    }
 
     @UiTemplate("Login.ui.xml")
     interface LoginUiBinder extends UiBinder<HTMLPanel, Login> {
