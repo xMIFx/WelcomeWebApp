@@ -6,6 +6,7 @@ import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.WelcomePagePlace;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -85,7 +86,8 @@ public class Login extends Composite implements ILoginView {
     }
 
     private void sendInfoToServer() {
-        loginServiceAsync.authorization(loginBox.getText(), passwordBox.getText(), new AsyncCallback<String>() {
+
+        loginServiceAsync.authorization(loginBox.getText(), passwordBox.getText(),  LocaleInfo.getCurrentLocale().getLocaleName(), new AsyncCallback<String>() {
             @Override
             public void onFailure(Throwable caught) {
                 GWT.log("error login service", caught);

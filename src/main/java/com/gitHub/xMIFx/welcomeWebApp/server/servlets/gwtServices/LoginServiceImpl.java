@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -29,6 +30,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
     private static final String userAttributeSessionName = "user";
     private HttpSession httpSession;
     private UserService userService;
+    private HttpServletRequest request;
 
 
     @Override
@@ -42,7 +44,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
         userService = (UserService) ctx.getBean("userService");
     }
 
-    public String authorization(String login, String password) {
+    public String authorization(String login, String password, String localeName) {
         User user = null;
         try {
             user = userService.getByLoginPassword(login, password);
@@ -59,10 +61,10 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
         httpSession = getThreadLocalRequest().getSession();
         httpSession = this.getThreadLocalRequest().getSession();
         httpSession.setAttribute(userAttributeSessionName, user);
+
         LOG.trace("Authorization successful");
-
-
-        Locale currentLocale = Locale.getDefault();
+        LOG.trace("locale from browser: " + localeName);
+        Locale currentLocale = new Locale(localeName);
 
         return userService.getHelloMessageForUser(currentLocale, user);
     }

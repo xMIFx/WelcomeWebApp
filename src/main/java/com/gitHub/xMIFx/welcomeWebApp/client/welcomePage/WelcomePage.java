@@ -26,7 +26,7 @@ public class WelcomePage extends Composite implements IWelcomePageView {
     final LoginResources res;
 
     @UiField
-    Button buttonExit;
+    Label buttonExit;
 
     @UiField
     Label welcome;

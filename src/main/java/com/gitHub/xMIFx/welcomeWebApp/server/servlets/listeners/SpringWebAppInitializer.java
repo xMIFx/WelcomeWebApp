@@ -16,8 +16,8 @@ import javax.servlet.ServletRegistration;
 /**
  * Created by Vlad on 20.09.2015.
  */
-public class SpringWebAppInitializer  extends AbstractAnnotationConfigDispatcherServletInitializer {
-    @Override
+public class SpringWebAppInitializer  /*extends AbstractAnnotationConfigDispatcherServletInitializer*/ {
+    /*@Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{MainSpringConfig.class};
     }
@@ -29,7 +29,7 @@ public class SpringWebAppInitializer  extends AbstractAnnotationConfigDispatcher
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/*"};
+        return new String[]{"*//*"};
     }
 
     @Override
@@ -41,6 +41,6 @@ public class SpringWebAppInitializer  extends AbstractAnnotationConfigDispatcher
     public void onStartup(ServletContext container) throws ServletException {
         super.onStartup(container);
         ServletRegistration.Dynamic testServlet = container.addServlet("gwtServlet", new SpringGwtRemoteServiceServlet());
-        testServlet.addMapping("/welcomeWebApp/gwt/*");
-    }
+        testServlet.addMapping("/welcomeWebApp/gwt*//*");
+    }*/
 }

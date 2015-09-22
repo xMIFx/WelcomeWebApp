@@ -1,9 +1,8 @@
 package com.gitHub.xMIFx.welcomeWebApp.client;
 
-import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginService;
-import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginServiceAsync;
 import com.gitHub.xMIFx.welcomeWebApp.client.footer.Footer;
 import com.gitHub.xMIFx.welcomeWebApp.client.header.Header;
+import com.gitHub.xMIFx.welcomeWebApp.client.login.LoginResources;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.AppActivityMapper;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.AppPlaceHistoryMapper;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.ClientFactory;
@@ -25,16 +24,20 @@ import com.google.web.bindery.event.shared.EventBus;
  */
 public class WelcomeWebApp implements EntryPoint {
 
-    private LoginServiceAsync loginServiceAsync = GWT.create(LoginService.class);
+
+    final LoginResources res = GWT.create(LoginResources.class);
     private Place defaultPlace = new LoginPlace("World!");
     private SimplePanel appWidget = new SimplePanel();
+
+    {
+        appWidget.setStyleName(res.style().background());
+    }
 
     /**
      * This is the entry point method.
      */
     public void onModuleLoad() {
         RootPanel.get("gwtContainer").add(new Header());
-       /* RootPanel.get("gwtContainer").add(new Login(this.loginServiceAsync));*/
 
         ClientFactory clientFactory = GWT.create(ClientFactory.class);
         EventBus eventBus = clientFactory.getEventBus();

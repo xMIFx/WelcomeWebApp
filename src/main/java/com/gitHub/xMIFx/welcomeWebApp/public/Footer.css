@@ -1,8 +1,9 @@
 .footer {
     width: 100%;
-    height: 15%;
-    max-height: 15%;
     background: #CECECE;
+    position: absolute;
+    bottom: 0px;
+    padding: 15px 0px;
 }
 
 .blackText {

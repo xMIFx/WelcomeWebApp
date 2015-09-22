@@ -17,6 +17,16 @@ public interface  LoginResources extends ClientBundle {
         String box();
 
         String background();
+
+        String center();
+
+        String holderText();
+
+        String leftText();
+
+        String exitButton();
+
+        String welcomeBackground();
     }
 
     @Source("../../public/Login.css")

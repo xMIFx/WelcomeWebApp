@@ -3,10 +3,12 @@
              ui:baseMessagesInterface="com.gitHub.xMIFx.welcomeWebApp.client.i18n.LoginUiMessages">
     <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.login.LoginResources" field="res">
     </ui:with>
-    <gwt:HTMLPanel styleName="{res.style.background}">
-        <gwt:Label ui:field="welcome"  styleName="{res.style.blackText}"/>
-    <gwt:Button ui:field="buttonExit"  styleName="{res.style.loginButton}">
-        <ui:msg key="exit">Not translated</ui:msg>
-    </gwt:Button>
+    <gwt:HTMLPanel addStyleNames="{res.style.welcomeBackground}">
+        <gwt:FlowPanel>
+            <gwt:Label ui:field="welcome"/>
+            <gwt:Label ui:field="buttonExit" styleName="{res.style.exitButton}">
+                <ui:msg key="exit">Not translated</ui:msg>
+            </gwt:Label>
+        </gwt:FlowPanel>
     </gwt:HTMLPanel>
 </ui:UiBinder>
