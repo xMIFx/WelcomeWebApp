@@ -14,4 +14,6 @@ public interface ClientFactory {
     PlaceController getPlaceController();
 
     ILoginView getLoginView();
+
+    IWelcomePageView getWelcomePageView();
 }

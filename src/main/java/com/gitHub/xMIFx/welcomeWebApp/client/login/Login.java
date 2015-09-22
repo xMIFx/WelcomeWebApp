@@ -1,8 +1,8 @@
 package com.gitHub.xMIFx.welcomeWebApp.client.login;
 
-import com.gitHub.xMIFx.welcomeWebApp.client.LoginServiceAsync;
+import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginServiceAsync;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.ILoginView;
-import com.gitHub.xMIFx.welcomeWebApp.client.welcomePage.WelcomePage;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.WelcomePagePlace;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -30,9 +30,6 @@ public class Login extends Composite implements ILoginView {
 
     @UiField
     Button buttonSubmit;
-
-    @UiField
-    Label errorBox;
 
     private Boolean tooShort = true;
 
@@ -82,27 +79,30 @@ public class Login extends Composite implements ILoginView {
         if (!tooShort) {
             sendInfoToServer();
         }
+        else {
+            GWT.log("Login or password too short");
+        }
     }
 
     private void sendInfoToServer() {
-        loginServiceAsync.authorization(loginBox.getText(), passwordBox.getText(), new AsyncCallback<Boolean>() {
+        loginServiceAsync.authorization(loginBox.getText(), passwordBox.getText(), new AsyncCallback<String>() {
             @Override
             public void onFailure(Throwable caught) {
-                errorBox.setText("error");
                 GWT.log("error login service", caught);
             }
 
             @Override
-            public void onSuccess(Boolean result) {
-                if (result) {
-                    errorBox.setText("true");
+            public void onSuccess(String result) {
+                if (result!=null) {
+                    GWT.log("Authorization successful");
+                    presenter.goTo(new WelcomePagePlace(result));
+                    passwordBox.setText("");
+
                 } else {
-                    errorBox.setText("false");
+                    GWT.log("Authorization failed");
                 }
             }
         });
-
-        RootPanel.get("gwtContainer").add(new WelcomePage());
     }
 
 

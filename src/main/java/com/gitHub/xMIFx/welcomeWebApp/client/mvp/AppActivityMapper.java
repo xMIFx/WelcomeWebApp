@@ -1,7 +1,9 @@
 package com.gitHub.xMIFx.welcomeWebApp.client.mvp;
 
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.activity.LoginActivity;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.activity.WelcomePageActivity;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.LoginPlace;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.WelcomePagePlace;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
@@ -21,9 +23,9 @@ public class AppActivityMapper implements ActivityMapper {
     public Activity getActivity(Place place) {
         if (place instanceof LoginPlace) {
             return new LoginActivity(clientFactory);
-        } /*else if (place instanceof GoodbyePlace) {
-            return new GoodbyeActivity((GoodbyePlace) place, clientFactory);
-        }*/
+        } else if (place instanceof WelcomePagePlace) {
+            return new WelcomePageActivity(((WelcomePagePlace) place).getWelcomePageName(),clientFactory);
+        }
         return null;
     }
 }

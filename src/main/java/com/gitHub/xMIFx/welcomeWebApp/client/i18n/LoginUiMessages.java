@@ -10,4 +10,5 @@ public interface LoginUiMessages extends Messages {
     String login();
     String password();
     String submit();
+    String exit();
 }

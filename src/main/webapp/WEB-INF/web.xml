@@ -17,4 +17,14 @@
 		<url-pattern>/welcomeWebApp/gwt/loginService</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>logOutServlet</servlet-name>
+		<servlet-class>com.gitHub.xMIFx.welcomeWebApp.server.servlets.gwtServices.LogOutServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>logOutServlet</servlet-name>
+		<url-pattern>/welcomeWebApp/gwt/logOutService</url-pattern>
+	</servlet-mapping>
+
 </web-app>

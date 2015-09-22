@@ -1,8 +1,9 @@
 package com.gitHub.xMIFx.welcomeWebApp.client;
 
+import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginService;
+import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginServiceAsync;
 import com.gitHub.xMIFx.welcomeWebApp.client.footer.Footer;
 import com.gitHub.xMIFx.welcomeWebApp.client.header.Header;
-import com.gitHub.xMIFx.welcomeWebApp.client.login.Login;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.AppActivityMapper;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.AppPlaceHistoryMapper;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.ClientFactory;
@@ -11,7 +12,6 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.i18n.client.Messages;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;

@@ -20,8 +20,6 @@
         <gwt:Button ui:field="buttonSubmit"  styleName="{res.style.loginButton}">
             <ui:msg key="submit">Not translated</ui:msg>
         </gwt:Button>
-        <gwt:Label ui:field="errorBox" styleName="{res.style.blackText}" addStyleNames="{res.style.inlineBlock}">
 
-        </gwt:Label>
     </gwt:HTMLPanel>
 </ui:UiBinder>

@@ -13,7 +13,7 @@ public class LoginPlace extends Place {
         this.loginName = token;
     }
 
-    public String getLoginNameName() {
+    public String getLoginName() {
         return loginName;
     }
 
@@ -21,7 +21,7 @@ public class LoginPlace extends Place {
 
         @Override
         public String getToken(LoginPlace place) {
-            return place.getLoginNameName();
+            return place.getLoginName();
         }
 
         @Override
