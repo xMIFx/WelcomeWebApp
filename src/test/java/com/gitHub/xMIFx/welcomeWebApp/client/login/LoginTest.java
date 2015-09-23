@@ -10,6 +10,7 @@ import com.googlecode.gwt.test.GwtModule;
 import com.googlecode.gwt.test.spring.GwtSpringRunner;
 import com.googlecode.gwt.test.spring.GwtSpringTest;
 import junit.framework.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
@@ -26,6 +27,7 @@ import static org.junit.Assert.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @ContextConfiguration(classes = TestConfiguration.class)
 @GwtModule("com.gitHub.xMIFx.welcomeWebApp.WelcomeWebApp")
+@Ignore
 public class LoginTest extends GwtSpringTest {
 
     public String getModuleName() {

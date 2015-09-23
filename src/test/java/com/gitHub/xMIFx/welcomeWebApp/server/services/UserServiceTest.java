@@ -29,7 +29,7 @@ public class UserServiceTest {
 
         User user = new User("login", "name");
         user.installHashPassword("password");
-        Long expected = 1L;
+        Long expected = 3L;
 
         Long result = userService.save(user);
 
