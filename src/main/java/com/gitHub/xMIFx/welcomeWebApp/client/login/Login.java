@@ -32,7 +32,8 @@ public class Login extends Composite implements ILoginView {
     @UiField
     Button buttonSubmit;
 
-    private Boolean tooShort = true;
+    private Boolean loginTooShort = true;
+    private Boolean passwordTooShort = true;
 
     private final LoginServiceAsync loginServiceAsync;
 
@@ -60,24 +61,27 @@ public class Login extends Composite implements ILoginView {
     @UiHandler("loginBox")
     void handleLoginChange(ValueChangeEvent<String> event) {
         if (event.getValue().length() < 1) {
-            tooShort = true;
+            loginTooShort = true;
         } else {
-            tooShort = false;
+            loginTooShort = false;
+            GWT.log("Login is ok");
         }
     }
 
     @UiHandler("passwordBox")
     void handlePasswordChange(ValueChangeEvent<String> event) {
         if (event.getValue().length() < 1) {
-            tooShort = true;
+            passwordTooShort = true;
         } else {
-            tooShort = false;
+            passwordTooShort = false;
+            GWT.log("Password is ok");
         }
     }
 
     @UiHandler("buttonSubmit")
     void onClick(ClickEvent e) {
-        if (!tooShort) {
+        if (!passwordTooShort && !loginTooShort) {
+            GWT.log("Start login");
             sendInfoToServer();
         }
         else {

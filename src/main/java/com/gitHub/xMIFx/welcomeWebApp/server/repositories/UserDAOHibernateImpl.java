@@ -19,19 +19,6 @@ public class UserDAOHibernateImpl implements UserDAO {
     @Autowired
     private SessionFactory factory;
 
-   /* {
-        try {
-            User user1 = new User("john", "John");
-            user1.installHashPassword("smith");
-            save(user1);
-
-            User user2 = new User("ivan", "Иван");
-            user2.installHashPassword("secret");
-            save(user2);
-        } catch (Throwable t) {
-        }
-    }*/
-
     @Transactional
     @Override
     public Long save(User user) {

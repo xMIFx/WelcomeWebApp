@@ -35,7 +35,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByLoginPassword(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException {
-        return userDAO.getByLoginPassword(login, Cryptographer.getCryptString(password));
+        String hashPass = Cryptographer.getCryptString(password);
+        User user = userDAO.getByLoginPassword(login, hashPass);
+        return user;
     }
 
     @Override

@@ -101,6 +101,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.gwt-test-utils</groupId>
+            <artifactId>gwt-test-utils</artifactId>
+            <version>0.47</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--logging-->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -223,7 +230,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven.warPlugin.version}</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
                     <warSourceExcludes>.gwt-tmp/**</warSourceExcludes>
                 </configuration>
             </plugin>
@@ -235,6 +241,11 @@
                     <source>${jdc.version}</source>
                     <target>${jdc.version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
             </plugin>
         </plugins>
     </build>

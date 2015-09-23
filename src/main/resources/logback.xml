@@ -26,10 +26,10 @@
             <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
         </encoder>
     </appender>
-    <logger name="com.gitHub.xMIFx"  level = "trace" additivity="false">
+    <logger name="com.gitHub.xMIFx"  level = "INFO" additivity="false">
         <appender-ref ref="FILE"/>
     </logger>
-    <root level="trace">
+    <root level="error">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

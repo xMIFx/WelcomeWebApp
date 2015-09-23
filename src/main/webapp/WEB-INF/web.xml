@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<display-name>GWT-Maven-Archetype</display-name>	
-	
+	<display-name>GWT-Maven-Archetype</display-name>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+
 	<!-- Servlets -->
-	<servlet>
+    <servlet>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <url-pattern>/gwt/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
 		<servlet-name>loginServlet</servlet-name>
 		<servlet-class>com.gitHub.xMIFx.welcomeWebApp.server.servlets.gwtServices.LoginServiceImpl</servlet-class>
 	</servlet>

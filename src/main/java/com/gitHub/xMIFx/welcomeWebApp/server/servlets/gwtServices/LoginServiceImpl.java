@@ -9,6 +9,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -25,24 +26,13 @@ import java.util.Locale;
  * Created by Vlad on 20.09.2015.
  */
 @Service("loginService")
-public class LoginServiceImpl extends RemoteServiceServlet implements LoginService {
+public class LoginServiceImpl extends SpringGWTServlet implements LoginService {
     private static final Logger LOG = LoggerFactory.getLogger(LoginServiceImpl.class);
     private static final String userAttributeSessionName = "user";
     private HttpSession httpSession;
+    @Autowired
     private UserService userService;
-    private HttpServletRequest request;
 
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-        ctx.register(MainSpringConfig.class);
-        ctx.register(DataBaseConfig.class);
-        ctx.refresh();
-        ctx.start();
-        userService = (UserService) ctx.getBean("userService");
-    }
 
     public String authorization(String login, String password, String localeName) {
         User user = null;
@@ -54,6 +44,8 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
             LOG.error("Invalid KeySpec", e);
         } catch (UnsupportedEncodingException e) {
             LOG.error("UnsupportedEncodingException", e);
+        } catch (Throwable t){
+            t.printStackTrace();
         }
         if (user == null) {
             return null;

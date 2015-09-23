@@ -47,7 +47,7 @@ public class TestConfiguration {
     public LocalSessionFactoryBean sessionFact() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setPackagesToScan("com.github.xMIFx.welcomeWebApp.server.domain");
+        sessionFactory.setPackagesToScan("com.gitHub.xMIFx.welcomeWebApp.server.domain");
         sessionFactory.setDataSource(dataSource());
 
         return sessionFactory;
@@ -69,6 +69,10 @@ public class TestConfiguration {
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.connection.CharSet", env.getRequiredProperty("hibernate.connection.CharSet"));
+        properties.put("hibernate.connection.characterEncoding", env.getRequiredProperty("hibernate.connection.characterEncoding"));
+        properties.put("hibernate.connection.useUnicode", env.getRequiredProperty("hibernate.connection.useUnicode"));
+        properties.put("hibernate.hbm2ddl.import_files", "insert_h2.sql");
         return properties;
     }
 

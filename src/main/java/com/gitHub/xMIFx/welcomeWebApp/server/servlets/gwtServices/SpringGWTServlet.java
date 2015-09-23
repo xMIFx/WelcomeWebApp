@@ -16,24 +16,13 @@ import javax.servlet.ServletException;
  * Created by bukatinvv on 21.09.2015.
  */
 
-public class SpringGWTServlet /*extends RemoteServiceServlet*/ {
-    /*private static  AnnotationConfigApplicationContext ctx;
+public class SpringGWTServlet extends RemoteServiceServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-         ctx =
-                new AnnotationConfigApplicationContext();
-        ctx.register(MainSpringConfig.class);
-        ctx.register(DataBaseConfig.class);
-        ctx.refresh();
-        ctx.start();
-        *//*WebApplicationContextUtils.
+        WebApplicationContextUtils.
                 getRequiredWebApplicationContext(config.getServletContext()).
                 getAutowireCapableBeanFactory().
-                autowireBean(this);*//* //java.lang.IllegalStateException: No WebApplicationContext found: no ContextLoaderListener registered?
+                autowireBean(this);
     }
-
-    public static Object getBean(Class clazz){
-       return ctx.getBean(clazz);
-    }*/
 }
