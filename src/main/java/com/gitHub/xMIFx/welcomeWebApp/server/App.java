@@ -15,7 +15,7 @@ import java.util.Locale;
  */
 public class App {
     private static final Logger LOG = LoggerFactory.getLogger(App.class);
-    private static final String nameProjectConfigFile = "project.properties";
+    private static final String NAME_PROJECT_CONFIG_FILE = "project.properties";
 
     public static void main(String[] args) {
         LocalTime startTime = LocalTime.now();
@@ -24,7 +24,7 @@ public class App {
         LOG.info("current locale: " + currentLocale);
         PropertiesReader properties = null;
         try {
-            properties = new PropertiesReader(nameProjectConfigFile, currentLocale);
+            properties = new PropertiesReader(NAME_PROJECT_CONFIG_FILE, currentLocale);
 
             List<WelcomeMessage> welcomeMessageList = properties.getWelcomeMessageList();
             LOG.info("Start to choose welcome message.");
@@ -35,7 +35,7 @@ public class App {
                 }
             }
         } catch (IOException e) {
-            LOG.error("Error when read the properties " + nameProjectConfigFile, e);
+            LOG.error("Error when read the properties " + NAME_PROJECT_CONFIG_FILE, e);
         }
         LOG.info("The End.");
     }

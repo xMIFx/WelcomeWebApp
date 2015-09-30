@@ -1,0 +1,27 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
+             ui:baseMessagesInterface="com.gitHub.xMIFx.welcomeWebApp.client.i18n.MainUiMessages">
+    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.view.cssResources.MainResources" field="res">
+    </ui:with>
+    <gwt:HTMLPanel styleName="{res.style.center}">
+        <gwt:FlowPanel styleName="{res.style.leftText}" addStyleNames="{res.style.inlineBlock}" >
+            <gwt:FlowPanel>
+                <gwt:Label styleName="{res.style.blackText}" addStyleNames="{res.style.holderText}">
+                    <ui:msg key="login">Not translated</ui:msg>
+                </gwt:Label>
+                <gwt:TextBox ui:field="loginBox" styleName="{res.style.box}" addStyleNames="{res.style.inlineBlock}"/>
+            </gwt:FlowPanel>
+            <gwt:FlowPanel>
+                <gwt:Label styleName="{res.style.blackText}" addStyleNames="{res.style.holderText}">
+                    <ui:msg key="password">Not translated</ui:msg>
+                </gwt:Label>
+                <gwt:PasswordTextBox ui:field="passwordBox"
+                                     styleName="{res.style.box}" addStyleNames="{res.style.inlineBlock}"/>
+            </gwt:FlowPanel>
+            <gwt:Button ui:field="buttonSubmit" styleName="{res.style.loginButton}">
+                <ui:msg key="submit">Not translated</ui:msg>
+            </gwt:Button>
+        </gwt:FlowPanel>
+
+    </gwt:HTMLPanel>
+</ui:UiBinder>

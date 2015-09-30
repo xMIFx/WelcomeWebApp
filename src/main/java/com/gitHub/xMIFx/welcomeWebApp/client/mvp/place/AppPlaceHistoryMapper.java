@@ -1,4 +1,4 @@
-package com.gitHub.xMIFx.welcomeWebApp.client.mvp;
+package com.gitHub.xMIFx.welcomeWebApp.client.mvp.place;
 
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.LoginPlace;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.WelcomePagePlace;

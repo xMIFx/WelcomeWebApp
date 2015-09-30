@@ -1,6 +1,6 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'>
-    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.footer.FooterResources" field="res">
+    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.view.cssResources.FooterResources" field="res">
     </ui:with>
     <gwt:HTMLPanel styleName="{res.style.footer}">
         <gwt:Label text="© 2015 Ardas Group" styleName="{res.style.blackText}"/>

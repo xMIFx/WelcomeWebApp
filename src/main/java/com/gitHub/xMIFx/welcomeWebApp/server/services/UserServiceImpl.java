@@ -23,15 +23,13 @@ import java.util.Locale;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private static final String nameProjectConfigFile = "project.properties";
     private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final String NAME_PROJECT_CONFIG_FILE = "project.properties";
+
+
     @Autowired
     private UserDAO userDAO;
 
-    @Override
-    public Long save(User user) {
-        return userDAO.save(user);
-    }
 
     @Override
     public User getByLoginPassword(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException {
@@ -41,48 +39,31 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(Long id) {
-        return userDAO.getById(id);
-    }
-
-    @Override
-    public boolean update(User user) {
-        return userDAO.update(user);
-    }
-
-    @Override
-    public boolean remove(User user) {
-        return userDAO.remove(user);
-    }
-
-    @Override
     public String getHelloMessageForUser(Locale currentLocale, User user) {
         LocalTime startTime = LocalTime.now();
         LOG.info("current locale: " + currentLocale);
         PropertiesReader properties = null;
-        StringBuilder welcomeMessageForReturn = null;
+        StringBuilder welcomeMessageForReturn = new StringBuilder();
         try {
-            properties = new PropertiesReader(nameProjectConfigFile, currentLocale);
+            properties = new PropertiesReader(NAME_PROJECT_CONFIG_FILE, currentLocale);
 
             List<WelcomeMessage> welcomeMessageList = properties.getWelcomeMessageList();
             LOG.info("Start to choose welcome message.");
             for (WelcomeMessage welcomeMessage : welcomeMessageList) {
                 if (welcomeMessage.isTimeBetweenFromTo(startTime)) {
-                    welcomeMessageForReturn = new StringBuilder();
                     welcomeMessageForReturn.append(welcomeMessage.getHelloMessage());
                     LOG.info("Selected messageObject is: " + welcomeMessage.toString());
                 }
             }
         } catch (IOException e) {
-            LOG.error("Error when read the properties " + nameProjectConfigFile, e);
+            LOG.error("Error when read the properties " + NAME_PROJECT_CONFIG_FILE, e);
         }
-        if (welcomeMessageForReturn == null) {
-            welcomeMessageForReturn = new StringBuilder();
+        if (welcomeMessageForReturn.length() == 0) {
             welcomeMessageForReturn.append("welcome");
         } else {
             welcomeMessageForReturn.append(", ")
-                                   .append(user.getName())
-                                   .append(".");
+                    .append(user.getName())
+                    .append(".");
         }
 
         return welcomeMessageForReturn.toString();

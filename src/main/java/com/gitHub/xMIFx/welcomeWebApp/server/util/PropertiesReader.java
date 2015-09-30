@@ -15,21 +15,21 @@ import java.util.*;
 public class PropertiesReader {
     private static final Logger LOG = LoggerFactory.getLogger(PropertiesReader.class);
 
-    private final String nameProjectConfigFile;
+    private final String NAME_PROJECT_CONFIG_FILE;
     private List<WelcomeMessage> welcomeMessageList;
 
 
     public PropertiesReader(String propertiesName, Locale locale) throws IOException {
-        this.nameProjectConfigFile = propertiesName;
+        this.NAME_PROJECT_CONFIG_FILE = propertiesName;
         init(locale);
 
     }
 
     private void init(Locale locale) throws IOException {
-        LOG.info("start read from " + this.nameProjectConfigFile);
+        LOG.info("start read from " + this.NAME_PROJECT_CONFIG_FILE);
         Properties prop = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        try (InputStream in = loader.getResourceAsStream(this.nameProjectConfigFile)) {
+        try (InputStream in = loader.getResourceAsStream(this.NAME_PROJECT_CONFIG_FILE)) {
             prop.load(in);
             int numberOfWelcomeMessages = Integer.parseInt(prop.getProperty("numberOfWelcomeMessages"));
             LOG.info("number of different welcome messages: " + numberOfWelcomeMessages);
@@ -37,12 +37,12 @@ public class PropertiesReader {
             for (int i = 1; i <= numberOfWelcomeMessages; i++) {
                 LOG.info("begin create " + i + " of " + numberOfWelcomeMessages + " different welcome messages");
                 String propertyObjectName = "welcomeObj" + i;
-                LocalTime from = LocalTime.of(
-                        Integer.parseInt(prop.getProperty(propertyObjectName + ".from.hh"))
-                        , Integer.parseInt(prop.getProperty(propertyObjectName + ".from.MM")));
-                LocalTime to = LocalTime.of(
-                        Integer.parseInt(prop.getProperty(propertyObjectName + ".to.hh"))
-                        , Integer.parseInt(prop.getProperty(propertyObjectName + ".to.MM")));
+                LocalTime from = getLocalTime(
+                        prop.getProperty(propertyObjectName + ".from.hh")
+                        , prop.getProperty(propertyObjectName + ".from.MM"));
+                LocalTime to = getLocalTime(
+                        prop.getProperty(propertyObjectName + ".to.hh")
+                        , prop.getProperty(propertyObjectName + ".to.MM"));
                 WelcomeMessage welcomeMessage = new WelcomeMessage(from, to);
                 setStringMessageWithLocalization(welcomeMessage, propertyObjectName, locale);
                 welcomeMessageList.add(welcomeMessage);
@@ -55,22 +55,31 @@ public class PropertiesReader {
         if (LOG.isTraceEnabled()) {
             LOG.trace("result of reading: " + welcomeMessageList.toString());
         }
-        LOG.info("finish read from: " + this.nameProjectConfigFile);
+        LOG.info("finish read from: " + this.NAME_PROJECT_CONFIG_FILE);
     }
 
     public List<WelcomeMessage> getWelcomeMessageList() {
         return welcomeMessageList;
     }
 
+    private LocalTime getLocalTime(String hh, String mm) {
+        return LocalTime.of(Integer.parseInt(hh), Integer.parseInt(mm));
+    }
+
     public static void setStringMessageWithLocalization(WelcomeMessage welcomeMessage, String resourceObjName, Locale locale) {
         if (LOG.isTraceEnabled()) {
             LOG.trace("Start setting message in: " + resourceObjName);
         }
+        //If there is no translate, then english
         Locale defLocale = Locale.getDefault();
         Locale.setDefault(Locale.ENGLISH);
+
         ResourceBundle bundle = ResourceBundle.getBundle("i18n/welcomeMessage", locale);
         String message = bundle.getString(resourceObjName + ".welcomeMessage");
+
+        //return default locale after set english
         Locale.setDefault(defLocale);
+
         if (LOG.isTraceEnabled()) {
             LOG.trace("set the message :" + message + " to: " + resourceObjName);
         }

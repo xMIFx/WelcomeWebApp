@@ -1,7 +1,6 @@
-package com.gitHub.xMIFx.welcomeWebApp.client.mvp;
+package com.gitHub.xMIFx.welcomeWebApp.client.mvp.presenter.activity;
 
-import com.gitHub.xMIFx.welcomeWebApp.client.mvp.activity.LoginActivity;
-import com.gitHub.xMIFx.welcomeWebApp.client.mvp.activity.WelcomePageActivity;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.ClientFactory;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.LoginPlace;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.WelcomePagePlace;
 import com.google.gwt.activity.shared.Activity;

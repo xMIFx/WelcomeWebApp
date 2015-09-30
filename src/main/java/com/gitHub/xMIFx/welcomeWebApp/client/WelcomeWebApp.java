@@ -1,10 +1,10 @@
 package com.gitHub.xMIFx.welcomeWebApp.client;
 
-import com.gitHub.xMIFx.welcomeWebApp.client.footer.Footer;
-import com.gitHub.xMIFx.welcomeWebApp.client.header.Header;
-import com.gitHub.xMIFx.welcomeWebApp.client.login.LoginResources;
-import com.gitHub.xMIFx.welcomeWebApp.client.mvp.AppActivityMapper;
-import com.gitHub.xMIFx.welcomeWebApp.client.mvp.AppPlaceHistoryMapper;
+import com.gitHub.xMIFx.welcomeWebApp.client.view.footer.Footer;
+import com.gitHub.xMIFx.welcomeWebApp.client.view.header.Header;
+import com.gitHub.xMIFx.welcomeWebApp.client.view.cssResources.MainResources;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.presenter.activity.AppActivityMapper;
+import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.AppPlaceHistoryMapper;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.ClientFactory;
 import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.LoginPlace;
 import com.google.gwt.activity.shared.ActivityManager;
@@ -25,7 +25,7 @@ import com.google.web.bindery.event.shared.EventBus;
 public class WelcomeWebApp implements EntryPoint {
 
 
-    final LoginResources res = GWT.create(LoginResources.class);
+    final MainResources res = GWT.create(MainResources.class);
     private Place defaultPlace = new LoginPlace("World!");
     private SimplePanel appWidget = new SimplePanel();
 

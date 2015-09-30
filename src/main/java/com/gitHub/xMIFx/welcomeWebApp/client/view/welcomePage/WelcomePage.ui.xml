@@ -1,7 +1,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
-             ui:baseMessagesInterface="com.gitHub.xMIFx.welcomeWebApp.client.i18n.LoginUiMessages">
-    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.login.LoginResources" field="res">
+             ui:baseMessagesInterface="com.gitHub.xMIFx.welcomeWebApp.client.i18n.MainUiMessages">
+    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.view.cssResources.MainResources" field="res">
     </ui:with>
     <gwt:HTMLPanel addStyleNames="{res.style.welcomeBackground}">
         <gwt:FlowPanel>

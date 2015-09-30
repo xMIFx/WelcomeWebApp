@@ -3,19 +3,12 @@ package com.gitHub.xMIFx.welcomeWebApp.server.servlets.gwtServices;
 import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginService;
 import com.gitHub.xMIFx.welcomeWebApp.server.domain.User;
 import com.gitHub.xMIFx.welcomeWebApp.server.services.UserService;
-import com.gitHub.xMIFx.welcomeWebApp.server.util.projectConfig.DataBaseConfig;
-import com.gitHub.xMIFx.welcomeWebApp.server.util.projectConfig.MainSpringConfig;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -28,8 +21,10 @@ import java.util.Locale;
 @Service("loginService")
 public class LoginServiceImpl extends SpringGWTServlet implements LoginService {
     private static final Logger LOG = LoggerFactory.getLogger(LoginServiceImpl.class);
-    private static final String userAttributeSessionName = "user";
+    private static final String USER_ATTRIBUTE_SESSION_NAME = "user";
+
     private HttpSession httpSession;
+
     @Autowired
     private UserService userService;
 
@@ -44,15 +39,13 @@ public class LoginServiceImpl extends SpringGWTServlet implements LoginService {
             LOG.error("Invalid KeySpec", e);
         } catch (UnsupportedEncodingException e) {
             LOG.error("UnsupportedEncodingException", e);
-        } catch (Throwable t){
-            t.printStackTrace();
         }
         if (user == null) {
             return null;
         }
         httpSession = getThreadLocalRequest().getSession();
         httpSession = this.getThreadLocalRequest().getSession();
-        httpSession.setAttribute(userAttributeSessionName, user);
+        httpSession.setAttribute(USER_ATTRIBUTE_SESSION_NAME, user);
 
         LOG.trace("Authorization successful");
         LOG.trace("locale from browser: " + localeName);

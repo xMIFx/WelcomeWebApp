@@ -1,6 +1,6 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
                            xmlns:gwt='urn:import:com.google.gwt.user.client.ui'>
-    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.header.HeaderResources" field="res">
+    <ui:with type="com.gitHub.xMIFx.welcomeWebApp.client.view.cssResources.HeaderResources" field="res">
     </ui:with>
 <gwt:HTMLPanel styleName = "{res.style.header}">
         <gwt:Image url="http://www.ardas.dp.ua/sites/default/files/logo_0.png" styleName = "{res.style.logoStyle}"/>

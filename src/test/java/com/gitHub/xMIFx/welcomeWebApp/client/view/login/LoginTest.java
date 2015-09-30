@@ -1,4 +1,4 @@
-package com.gitHub.xMIFx.welcomeWebApp.client.login;
+package com.gitHub.xMIFx.welcomeWebApp.client.view.login;
 
 import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginService;
 import com.gitHub.xMIFx.welcomeWebApp.client.clientServices.LoginServiceAsync;
@@ -9,13 +9,10 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.googlecode.gwt.test.GwtModule;
 import com.googlecode.gwt.test.spring.GwtSpringRunner;
 import com.googlecode.gwt.test.spring.GwtSpringTest;
-import junit.framework.Assert;
 import org.junit.Ignore;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 
