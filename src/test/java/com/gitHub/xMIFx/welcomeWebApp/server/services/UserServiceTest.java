@@ -2,6 +2,8 @@ package com.gitHub.xMIFx.welcomeWebApp.server.services;
 
 import com.gitHub.xMIFx.welcomeWebApp.server.domain.User;
 import com.gitHub.xMIFx.welcomeWebApp.server.util.projectConfig.TestConfiguration;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,67 +26,22 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    @Test
-    public void testSave() throws Exception {
-
-        User user = new User("login", "name");
-        user.installHashPassword("password");
-        Long expected = 3L;
-
-        Long result = userService.save(user);
-
-        assertThat(result, is(expected));
-
-    }
+    @Autowired
+    private SessionFactory factory;
 
     @Test
     public void testGetByLoginPassword() throws Exception {
         User expected = new User("login", "name");
         String password = "password";
         expected.installHashPassword(password);
-        userService.save(expected);
+        try (Session session = factory.openSession()) {
+            session.save(expected);
+        }
 
         User result = userService.getByLoginPassword(expected.getLogin(), password);
 
         assertThat(result, is(expected));
 
-
     }
 
-    @Test
-    public void testGetById() throws Exception {
-        User expected = new User("login", "name");
-        String password = "password";
-        expected.installHashPassword(password);
-        userService.save(expected);
-
-        User result = userService.getById(expected.getId());
-
-        assertThat(result, is(expected));
-    }
-
-    @Test
-    public void testUpdate() throws Exception {
-        User expected = new User("login", "name");
-        String password = "password";
-        expected.installHashPassword(password);
-        userService.save(expected);
-        expected.setName("newName");
-
-        userService.update(expected);
-        User result = userService.getById(expected.getId());
-
-        assertThat(result, is(expected));
-    }
-
-    @Test
-    public void testRemove() throws Exception {
-        User expected = new User("login", "name");
-        String password = "password";
-        expected.installHashPassword(password);
-        userService.save(expected);
-        userService.remove(expected);
-        User result = userService.getById(expected.getId());
-        assertThat(result, is(nullValue()));
-    }
 }

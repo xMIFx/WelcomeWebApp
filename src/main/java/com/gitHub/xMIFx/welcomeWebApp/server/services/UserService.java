@@ -11,15 +11,8 @@ import java.util.Locale;
  * Created by bukatinvv on 16.09.2015.
  */
 public interface UserService {
-    Long save(User user);
 
     User getByLoginPassword(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException;
-
-    User getById(Long id);
-
-    boolean update(User user);
-
-    boolean remove(User user);
 
     String getHelloMessageForUser(Locale currentLocale, User user);
 

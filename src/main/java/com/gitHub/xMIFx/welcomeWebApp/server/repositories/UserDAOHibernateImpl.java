@@ -19,15 +19,6 @@ public class UserDAOHibernateImpl implements UserDAO {
     @Autowired
     private SessionFactory factory;
 
-    @Transactional
-    @Override
-    public Long save(User user) {
-        Session session = factory.getCurrentSession();
-        session.save(user);
-        return user.getId();
-    }
-
-
     @Override
     public User getByLoginPassword(String login, String password) {
         User user = null;
@@ -40,39 +31,4 @@ public class UserDAOHibernateImpl implements UserDAO {
         return user;
     }
 
-    @Override
-    public User getById(Long id) {
-        User user = null;
-        try (Session session = factory.openSession()) {
-            user = (User) session.createCriteria(User.class)
-                    .add(Restrictions.eq("id", id))
-                    .uniqueResult();
-        }
-        return user;
-    }
-
-    @Override
-    public List<User> getAll() {
-        List<User> personList = new ArrayList<>();
-        try (Session session = factory.openSession()) {
-            personList = (List<User>) session.createCriteria(User.class).list();
-        }
-        return personList;
-    }
-
-    @Transactional
-    @Override
-    public boolean update(User user) {
-        Session session = factory.getCurrentSession();
-        session.update(user);
-        return true;
-    }
-
-    @Transactional
-    @Override
-    public boolean remove(User user) {
-        Session session = factory.getCurrentSession();
-        session.delete(user);
-        return true;
-    }
 }
