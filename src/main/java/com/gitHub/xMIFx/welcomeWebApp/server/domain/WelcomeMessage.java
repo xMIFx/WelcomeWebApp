@@ -15,7 +15,7 @@ public class WelcomeMessage implements Serializable {
     public WelcomeMessage() {
     }
 
-    public WelcomeMessage(LocalTime from, LocalTime to) {
+    public WelcomeMessage(final LocalTime from, final LocalTime to) {
         this.from = from;
         this.to = to;
     }
@@ -24,7 +24,7 @@ public class WelcomeMessage implements Serializable {
         return helloMessage;
     }
 
-    public void setHelloMessage(String helloMessage) {
+    public void setHelloMessage(final String helloMessage) {
         this.helloMessage = helloMessage;
     }
 
@@ -32,7 +32,7 @@ public class WelcomeMessage implements Serializable {
         return from;
     }
 
-    public void setFrom(LocalTime from) {
+    public void setFrom(final LocalTime from) {
         this.from = from;
     }
 
@@ -40,22 +40,21 @@ public class WelcomeMessage implements Serializable {
         return to;
     }
 
-    public void setTo(LocalTime to) {
+    public void setTo(final LocalTime to) {
         this.to = to;
     }
 
-    public boolean isTimeBetweenFromTo(LocalTime now) {
+    public boolean isTimeBetweenFromTo(final LocalTime now) {
         if (from.equals(now)) {
             return true;
         } else if (from.isBefore(to)
-                && from.isBefore(now)
-                && now.isBefore(to)) {
+                           && from.isBefore(now)
+                           && now.isBefore(to)) {
             return true;
         } else if (from.isAfter(to)
-                && ((now.isAfter(from)
-                && now.isBefore(LocalTime.MAX))
-                || (now.isAfter(LocalTime.MIN)
-                && now.isBefore(to)))) {
+                           && ((now.isAfter(from) && now.isBefore(LocalTime.MAX))
+                           || (now.isAfter(LocalTime.MIN)
+                           && now.isBefore(to)))) {
             return true;
         }
 
@@ -64,13 +63,21 @@ public class WelcomeMessage implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         WelcomeMessage that = (WelcomeMessage) o;
 
-        if (helloMessage != null ? !helloMessage.equals(that.helloMessage) : that.helloMessage != null) return false;
-        if (from != null ? !from.equals(that.from) : that.from != null) return false;
+        if (helloMessage != null ? !helloMessage.equals(that.helloMessage) : that.helloMessage != null) {
+            return false;
+        }
+        if (from != null ? !from.equals(that.from) : that.from != null) {
+            return false;
+        }
         return !(to != null ? !to.equals(that.to) : that.to != null);
 
     }
@@ -85,10 +92,10 @@ public class WelcomeMessage implements Serializable {
 
     @Override
     public String toString() {
-        return "WelcomeMessage{" +
-                "helloMessage='" + helloMessage + '\'' +
-                ", from=" + from +
-                ", to=" + to +
-                '}' + "\n";
+        return "WelcomeMessage{"
+                + "helloMessage='" + helloMessage + '\''
+                + ", from=" + from
+                + ", to=" + to
+                + '}' + "\n";
     }
 }

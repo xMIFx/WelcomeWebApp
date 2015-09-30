@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
                         , "com.gitHub.xMIFx.welcomeWebApp.server.servlets"})
 public class MainSpringConfig {
     @Bean(name = "userService")
-    public UserService userService(){
+    public UserService userService() {
         return new UserServiceImpl();
     }
 }

@@ -12,7 +12,10 @@ import java.util.Locale;
  */
 public interface UserService {
 
-    User getByLoginPassword(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException;
+    User getByLoginPassword(String login, String password)
+            throws NoSuchAlgorithmException,
+                   InvalidKeySpecException,
+                   UnsupportedEncodingException;
 
     String getHelloMessageForUser(Locale currentLocale, User user);
 

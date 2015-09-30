@@ -17,16 +17,19 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
  * Processing server response
  * Created by Vlad on 21.09.2015.
  */
-public class LoginActivity extends AbstractActivity implements ILoginView.ILoginPresenter {
-    private LoginServiceAsync loginServiceAsync = GWT.create(LoginService.class);
+public class LoginActivity extends AbstractActivity
+                                implements ILoginView.ILoginPresenter {
+    private LoginServiceAsync loginServiceAsync = GWT.create(
+                                                        LoginService.class);
     private ClientFactory clientFactory;
 
-    public LoginActivity(ClientFactory clientFactory) {
+    public LoginActivity(final ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
     }
 
     @Override
-    public void start(AcceptsOneWidget container, EventBus eventBus) {
+    public void start(final AcceptsOneWidget container,
+                      final EventBus eventBus) {
         ILoginView loginView = clientFactory.getLoginView();
         loginView.setPresenter(this);
         loginView.setTextToPasswordBox("");
@@ -35,15 +38,19 @@ public class LoginActivity extends AbstractActivity implements ILoginView.ILogin
     }
 
     @Override
-    public void callServer(String login, String password, String localeName) {
-        loginServiceAsync.authorization(login, password, localeName, new AsyncCallback<String>() {
+    public void callServer(final String login,
+                           final String password,
+                           final String localeName) {
+
+        loginServiceAsync.authorization(login, password,
+                localeName, new AsyncCallback<String>() {
             @Override
-            public void onFailure(Throwable caught) {
+            public void onFailure(final Throwable caught) {
                 GWT.log("error login service", caught);
             }
 
             @Override
-            public void onSuccess(String result) {
+            public void onSuccess(final String result) {
                 if (result != null) {
                     GWT.log("Authorization successful");
                     goTo(new WelcomePagePlace(result));
@@ -55,7 +62,7 @@ public class LoginActivity extends AbstractActivity implements ILoginView.ILogin
     }
 
     @Override
-    public void goTo(Place place) {
+    public void goTo(final Place place) {
         clientFactory.getPlaceController().goTo(place);
     }
 }

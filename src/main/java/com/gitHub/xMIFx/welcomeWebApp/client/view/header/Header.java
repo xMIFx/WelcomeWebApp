@@ -13,6 +13,8 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  * Created by Vlad on 19.09.2015.
  */
 public class Header extends Composite {
+    private static HeaderUiBinder ourUiBinder = GWT.create(HeaderUiBinder.class);
+
     @UiField(provided = true)
     final HeaderResources res;
 
@@ -20,7 +22,6 @@ public class Header extends Composite {
     interface HeaderUiBinder extends UiBinder<HTMLPanel, Header> {
     }
 
-    private static HeaderUiBinder ourUiBinder = GWT.create(HeaderUiBinder.class);
 
     public Header() {
         this.res = GWT.create(HeaderResources.class);

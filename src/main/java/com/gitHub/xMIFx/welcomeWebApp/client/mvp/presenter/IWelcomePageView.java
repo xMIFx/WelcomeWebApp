@@ -1,7 +1,7 @@
 package com.gitHub.xMIFx.welcomeWebApp.client.mvp.presenter;
 
-        import com.google.gwt.place.shared.Place;
-        import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.place.shared.Place;
+import com.google.gwt.user.client.ui.IsWidget;
 
 /**
  * Created by bukatinvv on 22.09.2015.

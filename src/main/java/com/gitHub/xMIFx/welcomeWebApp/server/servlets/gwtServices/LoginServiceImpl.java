@@ -30,7 +30,9 @@ public class LoginServiceImpl extends SpringGWTServlet implements LoginService {
     private UserService userService;
 
 
-    public String authorization(String login, String password, String localeName) {
+    public String authorization(final String login,
+                                final String password,
+                                final String localeName) {
         User user = null;
         try {
             user = userService.getByLoginPassword(login, password);

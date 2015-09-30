@@ -9,12 +9,16 @@ import java.security.spec.KeySpec;
 import java.util.Base64;
 
 /**
+ * Encode for string
  * Created by bukatinvv on 16.09.2015.
  */
-public class Cryptographer {
+public abstract class Cryptographer {
     private static final String NAME_CRYPT = "PBKDF2WithHmacSHA512";
 
-    public static String getCryptString(String string) throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeySpecException {
+    public static String getCryptString(final String string)
+            throws NoSuchAlgorithmException,
+                    UnsupportedEncodingException,
+                    InvalidKeySpecException {
         String saltString = new StringBuffer(string).reverse().toString();
         byte[] salt = saltString.getBytes("UTF-8");
         KeySpec spec = new PBEKeySpec(string.toCharArray(), salt, 65536, 128);

@@ -17,6 +17,9 @@ import com.google.gwt.user.client.ui.Label;
  * Created by bukatinvv on 21.09.2015.
  */
 public class WelcomePage extends Composite implements IWelcomePageView {
+
+    private static WelcomePageUiBinder ourUiBinder = GWT.create(WelcomePageUiBinder.class);
+
     private IWelcomePagePresenter presenter;
 
     @UiField(provided = true)
@@ -28,21 +31,9 @@ public class WelcomePage extends Composite implements IWelcomePageView {
     @UiField
     Label welcome;
 
-    @Override
-    public void setPresenter(IWelcomePagePresenter presenter) {
-        this.presenter = presenter;
-    }
-
-    @Override
-    public void setHelloString(String helloString) {
-        welcome.setText(helloString);
-    }
-
     @UiTemplate("WelcomePage.ui.xml")
     interface WelcomePageUiBinder extends UiBinder<HTMLPanel, WelcomePage> {
     }
-
-    private static WelcomePageUiBinder ourUiBinder = GWT.create(WelcomePageUiBinder.class);
 
     public WelcomePage() {
         this.res = GWT.create(MainResources.class);
@@ -50,8 +41,18 @@ public class WelcomePage extends Composite implements IWelcomePageView {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
+    @Override
+    public void setPresenter(final IWelcomePagePresenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void setHelloString(final String helloString) {
+        welcome.setText(helloString);
+    }
+
     @UiHandler("buttonExit")
-    void onClick(ClickEvent e) {
+    void onClick(final ClickEvent e) {
         presenter.callServer();
 
     }

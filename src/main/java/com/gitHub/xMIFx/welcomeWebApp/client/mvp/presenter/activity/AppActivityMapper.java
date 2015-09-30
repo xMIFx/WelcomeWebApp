@@ -13,17 +13,19 @@ import com.google.gwt.place.shared.Place;
 public class AppActivityMapper implements ActivityMapper {
     private ClientFactory clientFactory;
 
-    public AppActivityMapper(ClientFactory clientFactory) {
+    public AppActivityMapper(final ClientFactory clientFactory) {
         super();
         this.clientFactory = clientFactory;
     }
 
     @Override
-    public Activity getActivity(Place place) {
+    public Activity getActivity(final Place place) {
         if (place instanceof LoginPlace) {
             return new LoginActivity(clientFactory);
         } else if (place instanceof WelcomePagePlace) {
-            return new WelcomePageActivity(((WelcomePagePlace) place).getWelcomePageName(),clientFactory);
+            return new WelcomePageActivity(
+                               ((WelcomePagePlace) place).getWelcomePageName(),
+                               clientFactory);
         }
         return null;
     }

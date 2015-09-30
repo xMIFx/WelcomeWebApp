@@ -3,6 +3,7 @@ package com.gitHub.xMIFx.welcomeWebApp.server.domain;
 import com.gitHub.xMIFx.welcomeWebApp.server.util.Cryptographer;
 import org.hibernate.annotations.Type;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -24,7 +25,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String login, String name) {
+    public User(final String login, final String name) {
         this.login = login;
         this.name = name;
     }
@@ -38,7 +39,7 @@ public class User implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -47,7 +48,7 @@ public class User implements Serializable {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(final String login) {
         this.login = login;
     }
 
@@ -56,7 +57,7 @@ public class User implements Serializable {
         return password;
     }
 
-    private void setPassword(String password) {
+    private void setPassword(final String password) {
         this.password = password;
     }
 
@@ -65,18 +66,22 @@ public class User implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
-    public void installHashPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException {
+    public void installHashPassword(final String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException {
         this.password = Cryptographer.getCryptString(password);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         User user = (User) o;
 
@@ -91,11 +96,11 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "User{"
+                + "id=" + id
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", name='" + name + '\''
+                + '}';
     }
 }

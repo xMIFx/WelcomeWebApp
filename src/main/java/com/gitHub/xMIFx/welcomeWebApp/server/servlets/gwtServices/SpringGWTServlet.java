@@ -1,12 +1,8 @@
 package com.gitHub.xMIFx.welcomeWebApp.server.servlets.gwtServices;
 
-import com.gitHub.xMIFx.welcomeWebApp.server.services.UserService;
-import com.gitHub.xMIFx.welcomeWebApp.server.services.UserServiceImpl;
-import com.gitHub.xMIFx.welcomeWebApp.server.util.projectConfig.DataBaseConfig;
-import com.gitHub.xMIFx.welcomeWebApp.server.util.projectConfig.MainSpringConfig;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletConfig;

@@ -17,18 +17,21 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
  * Change view after server response
  * Created by bukatinvv on 22.09.2015.
  */
-public class WelcomePageActivity extends AbstractActivity implements IWelcomePageView.IWelcomePagePresenter {
+public class WelcomePageActivity extends AbstractActivity
+                     implements IWelcomePageView.IWelcomePagePresenter {
     private LogOutServiceAsync logOutServiceAsync = GWT.create(LogOutService.class);
     private ClientFactory clientFactory;
     private String helloString;
 
-    public WelcomePageActivity(String helloString, ClientFactory clientFactory) {
+    public WelcomePageActivity(final String helloString,
+                               final ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
         this.helloString = helloString;
     }
 
     @Override
-    public void start(AcceptsOneWidget container, EventBus eventBus) {
+    public void start(final AcceptsOneWidget container,
+                      final EventBus eventBus) {
         IWelcomePageView welcomePageView = clientFactory.getWelcomePageView();
         welcomePageView.setPresenter(this);
         welcomePageView.setHelloString(helloString);
@@ -39,7 +42,7 @@ public class WelcomePageActivity extends AbstractActivity implements IWelcomePag
     public void callServer() {
         logOutServiceAsync.logOut(new AsyncCallback<Void>() {
             @Override
-            public void onFailure(Throwable throwable) {
+            public void onFailure(final Throwable throwable) {
                 GWT.log("error logOut service", throwable);
             }
 
@@ -52,7 +55,7 @@ public class WelcomePageActivity extends AbstractActivity implements IWelcomePag
     }
 
     @Override
-    public void goTo(Place place) {
+    public void goTo(final Place place) {
         clientFactory.getPlaceController().goTo(place);
     }
 }

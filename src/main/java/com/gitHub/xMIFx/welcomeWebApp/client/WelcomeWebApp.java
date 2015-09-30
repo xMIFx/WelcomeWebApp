@@ -25,7 +25,7 @@ import com.google.web.bindery.event.shared.EventBus;
 public class WelcomeWebApp implements EntryPoint {
 
 
-    final MainResources res = GWT.create(MainResources.class);
+    private final MainResources res = GWT.create(MainResources.class);
     private Place defaultPlace = new LoginPlace("World!");
     private SimplePanel appWidget = new SimplePanel();
 

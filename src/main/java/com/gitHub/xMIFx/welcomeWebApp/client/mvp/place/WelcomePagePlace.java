@@ -9,7 +9,7 @@ import com.google.gwt.place.shared.PlaceTokenizer;
 public class WelcomePagePlace extends Place {
     private String welcomePageName;
 
-    public WelcomePagePlace(String welcomePageName) {
+    public WelcomePagePlace(final String welcomePageName) {
         this.welcomePageName = welcomePageName;
     }
 
@@ -20,12 +20,12 @@ public class WelcomePagePlace extends Place {
     public static class Tokenizer implements PlaceTokenizer<WelcomePagePlace> {
 
         @Override
-        public String getToken(WelcomePagePlace place) {
+        public String getToken(final WelcomePagePlace place) {
             return place.getWelcomePageName();
         }
 
         @Override
-        public WelcomePagePlace getPlace(String token) {
+        public WelcomePagePlace getPlace(final String token) {
             return new WelcomePagePlace(token);
         }
 

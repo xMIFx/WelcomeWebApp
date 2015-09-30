@@ -2,7 +2,6 @@ package com.gitHub.xMIFx.welcomeWebApp.client.clientServices;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.google.gwt.core.client.GWT;
 
 /**
  * The client-side stub for the RPC service
@@ -10,6 +9,5 @@ import com.google.gwt.core.client.GWT;
  */
 @RemoteServiceRelativePath("gwt/logOutService")
 public interface LogOutService extends RemoteService {
-
     void logOut();
 }

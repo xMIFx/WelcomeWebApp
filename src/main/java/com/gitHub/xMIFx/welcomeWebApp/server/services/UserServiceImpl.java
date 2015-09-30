@@ -32,40 +32,46 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User getByLoginPassword(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException, UnsupportedEncodingException {
+    public User getByLoginPassword(final String login,
+                   final String password) throws NoSuchAlgorithmException,
+                           InvalidKeySpecException,
+                           UnsupportedEncodingException {
         String hashPass = Cryptographer.getCryptString(password);
         User user = userDAO.getByLoginPassword(login, hashPass);
         return user;
     }
 
     @Override
-    public String getHelloMessageForUser(Locale currentLocale, User user) {
+    public String getHelloMessageForUser(final Locale currentLocale,
+                                         final User user) {
         LocalTime startTime = LocalTime.now();
         LOG.info("current locale: " + currentLocale);
         PropertiesReader properties = null;
-        StringBuilder welcomeMessageForReturn = new StringBuilder();
+        StringBuilder welcMesForReturn = new StringBuilder();
         try {
             properties = new PropertiesReader(NAME_PROJECT_CONFIG_FILE, currentLocale);
 
-            List<WelcomeMessage> welcomeMessageList = properties.getWelcomeMessageList();
+            List<WelcomeMessage> welcMesList = properties.getWelcomeMessageList();
             LOG.info("Start to choose welcome message.");
-            for (WelcomeMessage welcomeMessage : welcomeMessageList) {
+            for (WelcomeMessage welcomeMessage : welcMesList) {
                 if (welcomeMessage.isTimeBetweenFromTo(startTime)) {
-                    welcomeMessageForReturn.append(welcomeMessage.getHelloMessage());
-                    LOG.info("Selected messageObject is: " + welcomeMessage.toString());
+                    welcMesForReturn.append(welcomeMessage.getHelloMessage());
+                    LOG.info("Selected messageObject is: "
+                            + welcomeMessage.toString());
                 }
             }
         } catch (IOException e) {
-            LOG.error("Error when read the properties " + NAME_PROJECT_CONFIG_FILE, e);
+            LOG.error("Error when read the properties "
+                    + NAME_PROJECT_CONFIG_FILE, e);
         }
-        if (welcomeMessageForReturn.length() == 0) {
-            welcomeMessageForReturn.append("welcome");
+        if (welcMesForReturn.length() == 0) {
+            welcMesForReturn.append("welcome");
         } else {
-            welcomeMessageForReturn.append(", ")
+            welcMesForReturn.append(", ")
                     .append(user.getName())
                     .append(".");
         }
 
-        return welcomeMessageForReturn.toString();
+        return welcMesForReturn.toString();
     }
 }

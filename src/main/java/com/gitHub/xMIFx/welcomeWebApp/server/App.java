@@ -24,7 +24,8 @@ public class App {
         LOG.info("current locale: " + currentLocale);
         PropertiesReader properties = null;
         try {
-            properties = new PropertiesReader(NAME_PROJECT_CONFIG_FILE, currentLocale);
+            properties = new PropertiesReader(NAME_PROJECT_CONFIG_FILE,
+                                    currentLocale);
 
             List<WelcomeMessage> welcomeMessageList = properties.getWelcomeMessageList();
             LOG.info("Start to choose welcome message.");

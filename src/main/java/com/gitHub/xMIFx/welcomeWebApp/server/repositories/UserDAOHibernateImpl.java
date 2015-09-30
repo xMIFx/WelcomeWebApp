@@ -6,10 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by bukatinvv on 16.09.2015.
@@ -20,7 +17,8 @@ public class UserDAOHibernateImpl implements UserDAO {
     private SessionFactory factory;
 
     @Override
-    public User getByLoginPassword(String login, String password) {
+    public final User getByLoginPassword(final String login,
+                                         final String password) {
         User user = null;
         try (Session session = factory.openSession()) {
             user = (User) session.createCriteria(User.class)
@@ -30,5 +28,4 @@ public class UserDAOHibernateImpl implements UserDAO {
         }
         return user;
     }
-
 }

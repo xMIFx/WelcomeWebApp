@@ -9,7 +9,7 @@ import com.google.gwt.place.shared.PlaceTokenizer;
 public class LoginPlace extends Place {
     private String loginName;
 
-    public LoginPlace(String token) {
+    public LoginPlace(final String token) {
         this.loginName = token;
     }
 
@@ -20,12 +20,12 @@ public class LoginPlace extends Place {
     public static class Tokenizer implements PlaceTokenizer<LoginPlace> {
 
         @Override
-        public String getToken(LoginPlace place) {
+        public String getToken(final LoginPlace place) {
             return place.getLoginName();
         }
 
         @Override
-        public LoginPlace getPlace(String token) {
+        public LoginPlace getPlace(final String token) {
             return new LoginPlace(token);
         }
 
