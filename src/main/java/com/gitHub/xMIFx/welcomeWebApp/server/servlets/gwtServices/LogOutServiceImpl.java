@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 
 /**
+ * * The server-side implementation of the RPC logOut service.
  * Created by bukatinvv on 22.09.2015.
  */
 @Service("logoutService")

@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 
 /**
+ * WelcomePageView for UiBinder
  * Created by bukatinvv on 21.09.2015.
  */
 public class WelcomePage extends Composite implements IWelcomePageView {

@@ -4,10 +4,11 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 
 /**
+ * inject Main.css in view
  * Created by Vlad on 19.09.2015.
  */
 public interface MainResources extends ClientBundle {
-    public interface MyCss extends CssResource {
+    interface MyCss extends CssResource {
         String blackText();
 
         String inlineBlock();
@@ -29,7 +30,7 @@ public interface MainResources extends ClientBundle {
         String welcomeBackground();
     }
 
-    @Source("../../../public/Login.css")
+    @Source("../../../public/Main.css")
     MyCss style();
 }
 

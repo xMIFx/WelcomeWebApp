@@ -16,6 +16,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.Locale;
 
 /**
+ * The server-side implementation of the RPC login service.
  * Created by Vlad on 20.09.2015.
  */
 @Service("loginService")

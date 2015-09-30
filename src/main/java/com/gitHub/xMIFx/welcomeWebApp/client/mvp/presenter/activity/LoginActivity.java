@@ -13,6 +13,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 /**
+ * Send user credentials to the server for authentification and authorisation.
+ * Processing server response
  * Created by Vlad on 21.09.2015.
  */
 public class LoginActivity extends AbstractActivity implements ILoginView.ILoginPresenter {

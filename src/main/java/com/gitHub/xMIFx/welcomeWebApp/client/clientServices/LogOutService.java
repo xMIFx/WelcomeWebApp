@@ -5,6 +5,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.google.gwt.core.client.GWT;
 
 /**
+ * The client-side stub for the RPC service
  * Created by bukatinvv on 22.09.2015.
  */
 @RemoteServiceRelativePath("gwt/logOutService")

@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 /**
+ * HeaderView for UiBinder
  * Created by Vlad on 19.09.2015.
  */
 public class Header extends Composite {

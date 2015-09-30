@@ -12,7 +12,7 @@ public interface IWelcomePageView extends IsWidget {
 
     void setHelloString(String helloString);
 
-    public interface IWelcomePagePresenter {
+    interface IWelcomePagePresenter {
         void callServer();
         void goTo(Place place);
     }

@@ -13,6 +13,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
 /**
+ * class for turn on Spring @Autowired in GWT servlet
  * Created by bukatinvv on 21.09.2015.
  */
 

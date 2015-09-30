@@ -13,7 +13,7 @@ public interface ILoginView extends IsWidget {
 
     void setTextToPasswordBox(String password);
 
-    public interface ILoginPresenter {
+    interface ILoginPresenter {
         void callServer(String login, String password, String localeName);
 
         void goTo(Place place);

@@ -13,6 +13,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 /**
+ * Send command to the server for logOut.
+ * Change view after server response
  * Created by bukatinvv on 22.09.2015.
  */
 public class WelcomePageActivity extends AbstractActivity implements IWelcomePageView.IWelcomePagePresenter {

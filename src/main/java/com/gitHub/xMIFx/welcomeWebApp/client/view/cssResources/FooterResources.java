@@ -4,10 +4,11 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 
 /**
+ * inject Footer.css in view
  * Created by Vlad on 19.09.2015.
  */
 public interface FooterResources extends ClientBundle {
-    public interface MyCss extends CssResource {
+    interface MyCss extends CssResource {
         String blackText();
 
         String footer();

@@ -10,6 +10,8 @@ import java.time.LocalTime;
 import java.util.*;
 
 /**
+ * read properties from file.
+ * create List with welcomeMessages
  * Created by Bukatin Vlad on 14.09.2015.
  */
 public class PropertiesReader {

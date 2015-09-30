@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.*;
 
 
 /**
+ * LoginView for UiBinder
  * Created by Vlad on 19.09.2015.
  */
 public class Login extends Composite implements ILoginView {

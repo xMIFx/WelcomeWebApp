@@ -1,7 +1,6 @@
 package com.gitHub.xMIFx.welcomeWebApp.client.mvp.place;
 
-import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.LoginPlace;
-import com.gitHub.xMIFx.welcomeWebApp.client.mvp.place.WelcomePagePlace;
+
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 
